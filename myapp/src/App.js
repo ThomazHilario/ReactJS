@@ -1,13 +1,11 @@
 // adicionando estilos ao app
 import './app.css'
 
-
 // componente exportado.
 export default function App(){
   return(
     <main>
-      <h1>Seja bem vindo ao meu primeiro app em ReactJS: Hello World</h1>
-      
+      <h2>Seja bem vindo ao meu app react de aprendizados</h2>
     </main>
   )
 }
