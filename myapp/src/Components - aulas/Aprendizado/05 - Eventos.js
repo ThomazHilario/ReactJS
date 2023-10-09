@@ -22,6 +22,7 @@ export default class Eventos extends Component{
         // bind
         this.entrar = this.entrar.bind(this)
         this.sair = this.sair.bind(this)
+        this.mouse = this.mouse.bind(this)
     }
 
     // funcction entrar
@@ -34,6 +35,11 @@ export default class Eventos extends Component{
         this.setState({nome:'voce saiu'})
     }
 
+    // Evento de mouseOver
+    mouse(value){
+        this.setState({nome:value})
+    }
+
     // Render
     render(){
 
@@ -42,7 +48,7 @@ export default class Eventos extends Component{
             <div>
                 <button onClick={() => this.entrar('Leo')}>Entrar</button>
                 <button onClick={this.sair}>Sair</button>
-                <h3>{this.state.nome}</h3>
+                <h3 onMouseOver={() => this.mouse('Passando o mouse')}>{this.state.nome}</h3>
             </div>
         )
     }
