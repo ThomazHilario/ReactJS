@@ -3,9 +3,18 @@ import {Component} from 'react'
 
 /*
     -> ciclo de vida dos components
-    - os componentes possuem ciclo de vidas: Quando ele e criando, quando acontece uma mudança de estado, e quando ele é desconstruido.
+    - os componentes possuem ciclo de vidas: inicialização, montagem, atualização e por fim desmontagem.
+
+    - inicialização: o componenente se prepara para ser iniciadoalizado, configurando os seus estados e suas props.
+
+    - montagem: o componente se prepara para ser montado na DOM podendo assim chamar alguns métodos para serem executados antes de montar o componente e depois de montar o componente.
+    - componentWillMount() - executa algo antes do component ser criado.
     - componentDidMount() - Esta função permite executar algo depois que o componente é montado.
+
+    - Atualização: quando o componente atualiza seus estados e suas props, assim podendo ser executado algo cada vez que algum estado ou props seja atualizados ou inseridos.
     - componentDidUpdate() - Toda vez que um component tem seustate alterado ele executa alguma coisa.
+
+    - Desmontagem: Nesta fase o componente não é mais necessário e está prestes a ser desmontado da DOM
 */
 
 
