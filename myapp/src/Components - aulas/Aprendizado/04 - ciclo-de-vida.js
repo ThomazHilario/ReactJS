@@ -14,7 +14,7 @@ import {Component} from 'react'
     - Atualização: quando o componente atualiza seus estados e suas props, assim podendo ser executado algo cada vez que algum estado ou props seja atualizados ou inseridos.
     - componentDidUpdate() - Toda vez que um component tem seustate alterado ele executa alguma coisa.
 
-    - Desmontagem: Nesta fase o componente não é mais necessário e está prestes a ser desmontado da DOM
+    - Desmontagem: Nesta fase o componente não é mais necessário e está prestes a ser desmontado da DOM.
 */
 
 
