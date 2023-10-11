@@ -1,4 +1,8 @@
-
+/*
+    -> Formulários em react
+    - Em react podemos trabalhar com formulários por meio das states.
+    - O valor padrão do formulário será uma chave do state, e por meio dos eventos onChange ou onInput alteramos o state atual pelo o que está sendo digitado no input.
+*/
 // importando component
 import {Component} from 'react'
 
