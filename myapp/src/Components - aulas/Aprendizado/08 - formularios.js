@@ -99,6 +99,8 @@ export class Cadastro extends Component{
             alert(`Nome: ${nome} \nEmail: ${email} \nSexo: ${sexo} \nSenha: ${senha}`)
         }
     }
+
+    
     render(){
         return(
             <form>
