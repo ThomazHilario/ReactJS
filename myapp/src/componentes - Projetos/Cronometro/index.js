@@ -82,7 +82,7 @@ class index extends Component {
                 </div>
 
                 {/* componente Button */}
-                <Button start={this.start} pause={this.pause} name={this.state.nameBtn}/>
+                <Button start={this.start} name={this.state.nameBtn}/>
             </div>
         );
     }
