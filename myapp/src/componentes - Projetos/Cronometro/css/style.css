@@ -1,0 +1,27 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+#cronometro_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cronometro_container > div{
+    font-size: 50px;
+}
+#cronometro_container > div > span {
+    font-size: 30px;
+}
+.btn{
+    width: 70px;
+    height: 23px;
+    border: 0px;
+    background-color: rgb(85, 85, 200);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
