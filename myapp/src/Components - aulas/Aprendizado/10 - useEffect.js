@@ -16,7 +16,11 @@ export default function MyList(){
         // cancelando o formulario
         e.preventDefault()
 
-        setLista([...lista,{username:name,email:email}])
+        if(name !== '' && email !== ''){
+            setLista([...lista,{username:name,email:email}])
+        } else{
+            alert('Preencha os campos')
+        }
     }
 
     // usando useEffect para salvar os itens na local storage
@@ -28,7 +32,7 @@ export default function MyList(){
     useEffect(() => {
         setLista(JSON.parse(localStorage.getItem('myList')))
     },[])
-    
+
     // return
     return(
         <div>
