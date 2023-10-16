@@ -11,4 +11,4 @@ export default function App(){
   )
 }
 
-// Depois de criado e exportado basta importalo no index.js
+// Depois de criado e exportado basta importa-lo no index.js
