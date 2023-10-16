@@ -1,12 +1,12 @@
 // adicionando estilos ao app
 import './app.css'
-import Cronometro from './componentes - Projetos/Cronometro/'
+import {Contador} from './Components - aulas/Aprendizado/09 - useState'
 // componente exportado.
 export default function App(){
   return(
     <main>
       <h2>Seja bem vindo ao meu app react de aprendizados</h2>
-      <Cronometro/>
+      <Contador/>
     </main>
   )
 }
