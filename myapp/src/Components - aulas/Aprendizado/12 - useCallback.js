@@ -14,7 +14,7 @@ export default function UseCallback(){
     // state - list
     let [lista,setLista] = useState([])
 
-    // add itens - A função myList ela irá não ira renderizar a cada modificação na state, ela irá ficar armazenada na memoria e depois que comparar a lista nova com a antiga,exclui a que está na memoria e adiciona a nova. Evitando executar / criar a função novamente
+    // add itens - A função myList ela não ira renderizar a cada modificação na state, ela irá ficar armazenada na memoria e depois que comparar a lista nova com a antiga,exclui a que está na memoria e adiciona a nova. Evitando executar / criar a função novamente
     let myList = useCallback((e)=>{
         // Cancelando o formulario
         e.preventDefault()
