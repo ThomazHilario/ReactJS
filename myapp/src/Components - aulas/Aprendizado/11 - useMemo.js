@@ -11,7 +11,7 @@ export default function Test(){
     const [number2,setNumber2] = useState(0)
 
 
-    // Toda vez que os states number1 e number2 forem modificados, executara o retorno da função useMemo, assim não renderizará o componente todo, so vai atualizar o valor que está na memória.
+    // Toda vez que os states number1 e number2 forem modificados, executara o retorno da função useMemo, assim não executara toda a function, so vai atualizar o valor que está na memória.
     let value = useMemo(() => {
         return number1 + number2
     },[number1,number2])
