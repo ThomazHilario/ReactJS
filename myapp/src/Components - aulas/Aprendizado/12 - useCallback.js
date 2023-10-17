@@ -20,7 +20,9 @@ export default function UseCallback(){
         e.preventDefault()
 
         // setando o novo valor a lista
-        setLista([...lista,{name:name,email:email}])
+        if(name !== '' && email !== ''){
+            setLista([...lista,{name:name,email:email}])
+        }
     },[name,email,lista])
 
     return(
