@@ -25,7 +25,7 @@ export default function Request(){
                 return(
                     <div key={item.id} className='card'>
                         <h1>{item.categoria}</h1>
-                        <img src={item.capa}/>
+                        <img src={item.capa} alt='imagem da api'/>
                         <h3>{item.titulo}</h3>
                         <p>{item.subtitulo}</p>
                     </div>
