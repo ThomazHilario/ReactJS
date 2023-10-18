@@ -1,14 +1,14 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#myApp{
     height: 100vh;
-    flex-direction: column;
 }
 h1,h2 {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    height: 10vh;
+    background-color: rgb(55, 55, 55);
 }

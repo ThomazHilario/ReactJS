@@ -71,7 +71,6 @@ class index extends Component {
         return (
             /* container */
             <div id='container'>
-
                 {/* Container do cronometro*/}
                 <div id='cronometro_container'>
 
