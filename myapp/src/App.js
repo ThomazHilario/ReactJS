@@ -1,12 +1,12 @@
 // adicionando estilos ao app
 import './app.css'
-import Requisicoes from './Components - aulas/Aprendizado/13 - requisicaoHTTP'
+import Rotas from './Components - aulas/Aprendizado/14 - Rotas'
 // componente exportado.
 export default function App(){
   return(
     <main>
       <h2>Seja bem vindo ao meu app react de aprendizados</h2>
-      <Requisicoes/>
+      <Rotas/>
     </main>
   )
 }
