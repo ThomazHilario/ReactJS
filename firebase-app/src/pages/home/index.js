@@ -15,12 +15,40 @@ export default function Home(){
     async function addUser(e){
         e.preventDefault()
         try {
-            await addDoc(collection(database,'users'), {
-                Name:inputName,
-                Age:inputAge
-            })
 
-            toast.success("usuario Cadastrado com sucesso")
+            // Fazendo a requisicao para pegar todos os usuarios
+            const docSnap = await getDocs(collection(database,'users'))
+
+            // array para armazenar os usuarios
+            let array = []
+
+            // percorrendo array
+            docSnap.forEach(element => {
+                
+                array.push(element.data())
+                
+            });
+            
+            if(array.length === 0){
+                await addDoc(collection(database,'users'), {
+                    Name:inputName,
+                    Age:inputAge
+                })
+
+                toast.success("usuario Cadastrado com sucesso")
+            }else if(!array.some((item) => item.Name === inputName)){
+                await addDoc(collection(database,'users'), {
+                    Name:inputName,
+                    Age:inputAge
+                })
+
+                toast.success("usuario Cadastrado com sucesso")
+            } else{
+                toast.warn('usuario cadastrado tente outro')
+            }
+
+            setName('')
+            setAge('')
         } catch (error) {
             toast.error("Usuario nao cadastrado")
         }
