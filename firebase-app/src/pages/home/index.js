@@ -4,8 +4,12 @@ import database from '../../database/firebaseConnection'
 import {collection, addDoc, getDocs} from 'firebase/firestore'
 import './home.css'
 export default function Home(){
+    // state - input
     const [inputName,setName] = useState('')
     const [inputAge,setAge] = useState('')
+
+    // state - usuarios
+    const [users,setUsers] = useState([])
 
     // Adicionando usuarios ao banco de dados
     async function addUser(e){
@@ -28,11 +32,18 @@ export default function Home(){
         // Fazendo a requisicao para pegar todos os usuarios
         const docSnap = await getDocs(collection(database,'users'))
 
+        // array para armazenar os usuarios
+        let array = []
+
         // percorrendo array
         docSnap.forEach(element => {
-            console.log(element.data())
+            
+            array.push(element.data())
+            
         });
 
+        // setando na state o array com os usuarios
+        setUsers(array)
     }
     return(
         <div id='container'>
@@ -55,6 +66,14 @@ export default function Home(){
                 </form>
             </fieldset>
             <button onClick={getUsers}>Pegar usuarios</button>
+
+            <ul>
+                {users.map((item,idx) => {
+                    return(
+                        <li key={idx}>{item.Name}</li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }
