@@ -1,9 +1,39 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import {toast} from 'react-toastify'
 import database from '../../database/firebaseConnection'
-import {collection, addDoc, getDocs, deleteDoc, doc} from 'firebase/firestore'
+import {collection, addDoc, getDocs, deleteDoc, doc, onSnapshot} from 'firebase/firestore'
 import './home.css'
 export default function Home(){
+
+    // Monitorando banco de dados
+    useEffect(() => {
+        async function loadState(){
+            try {
+                onSnapshot(collection(database,"users"), (snapshot) => {
+
+                    // array para armazenar os usuarios salvos no banco
+                    let usersDb = []
+
+                    // Percorrendo cada usuario no banco de dados
+                    snapshot.forEach(users => {
+                        usersDb.push({
+                            id:users.id,
+                            name:users.data().Name,
+                            age:users.data().Age
+                        })
+                    })
+
+                    // setando na state
+                    setUsers(usersDb)
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        loadState()
+    },[])
+
     // state - input
     const [inputName,setName] = useState('')
     const [inputAge,setAge] = useState('')
@@ -86,11 +116,6 @@ export default function Home(){
             // Removendo do banco de dados
             await deleteDoc(doc(database,'users',id))
 
-            // removendo da state
-            let novoUSers = users.filter((item) => item.id !== id)
-
-            // setando na state o novo array
-            setUsers(novoUSers)
         } catch (error) {
             console.log(error)
         }
