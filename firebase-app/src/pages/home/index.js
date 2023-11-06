@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {toast} from 'react-toastify'
 import database from '../../database/firebaseConnection'
-import {collection, addDoc, getDocs} from 'firebase/firestore'
+import {collection, addDoc, getDocs, deleteDoc, doc} from 'firebase/firestore'
 import './home.css'
 export default function Home(){
     // state - input
@@ -65,13 +65,35 @@ export default function Home(){
 
         // percorrendo array
         docSnap.forEach(element => {
+
+            array.push({
+                id:element.id,
+                name:element.data().Name,
+                age:element.data().Age
+            })
+
             
-            array.push(element.data())
             
         });
 
         // setando na state o array com os usuarios
         setUsers(array)
+    }
+
+    // Deletando usuario
+    async function deleteItem(id){
+        try {
+            // Removendo do banco de dados
+            await deleteDoc(doc(database,'users',id))
+
+            // removendo da state
+            let novoUSers = users.filter((item) => item.id !== id)
+
+            // setando na state o novo array
+            setUsers(novoUSers)
+        } catch (error) {
+            console.log(error)
+        }
     }
     return(
         <div id='container'>
@@ -98,7 +120,7 @@ export default function Home(){
             <ul>
                 {users.map((item,idx) => {
                     return(
-                        <li key={idx}>{item.Name}</li>
+                        <li key={idx}>{item.name} <button className='tbn-delete' onClick={() => deleteItem(item.id)}>Delete</button></li>
                     )
                 })}
             </ul>

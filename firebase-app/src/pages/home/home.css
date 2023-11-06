@@ -42,3 +42,10 @@ button{
 
     font-weight: bold;
 }
+
+.tbn-delete{
+    width: 80px;
+    margin-left: 10px;
+
+    background-color: rgb(218, 81, 81);
+}
