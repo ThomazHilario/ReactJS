@@ -1,0 +1,59 @@
+main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(35, 33, 33);
+    color: white;
+
+    border: 1px solid black;
+    border-radius: 8px;
+
+    height: 300px;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+}
+
+.formulario > legend{
+    font-size: 30px;
+}
+
+.campos{
+    display: flex;
+    flex-direction: column;
+}
+
+.campos > input{
+    height: 20px;
+    width: 200px;
+
+    border-radius: 5px;
+    border: 2px solid black;
+
+    padding-left: 5px;
+
+    background-color: rgba(0, 0, 0, 0.406);
+    color: white;
+}
+
+.campos > button{
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: rgb(83, 83, 217);
+    
+    border: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 180px;
+}
