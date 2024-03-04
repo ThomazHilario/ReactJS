@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // types
 import { FormEvent } from "react"
@@ -20,7 +21,7 @@ export const Home = () => {
         <main className="bg-green-100 h-screen flex flex-col justify-center items-center gap-4">
 
             {/* Title */}
-            <h1 className="text-3xl font-bold">Dev Login</h1>
+            <Link to='/painel' className="text-3xl font-bold">Dev Login</Link>
 
             <form className="flex flex-col justify-center items-center gap-2"
             onSubmit={singIn}>
