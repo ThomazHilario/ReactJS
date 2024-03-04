@@ -14,7 +14,8 @@
 - Agora dentro da pasta User devemos criar um arquivo slice.js: responsavel por configurar as states e as actions.
 
  - Dentro de slice configurar as states ex:
- ...
+   
+```
     // importando o createSlice
     import { createSlice } from '@reduxjs/toolkit'
 
@@ -34,11 +35,12 @@
 
     // exportando
     export default userSlice.reducer
- ...
+```
 
 
  - Agora devemos configurar o arquivo root-reducer:
- ...
+   
+```
     // importar combine reducers
     import { combineReducers } from 'redux'
 
@@ -51,12 +53,13 @@
     })
 
     // Exportando o combine
-    export default combine
- ...
+    export default combine   
+```
 
  -> Agora no arquivo store.js:
- ...
- // importar o configureStore
+ 
+```
+    // importar o configureStore
     import { configureStore } from '@reduxjs/toolkit'
 
     // import o combine
@@ -66,4 +69,4 @@
     export const Store = configureStore({
         reducer: combine
     })
- ...
+```
