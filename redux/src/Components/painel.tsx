@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom"
 
+import { useSelector } from "react-redux"
+
+import { InitialStateProps } from "../Redux/User/slice"
+
 export const Painel = () => {
+
+    const {user} = useSelector<InitialStateProps>((rootReducer) => rootReducer.user) as InitialStateProps
+
+    console.log(user)
     return(
         <main className="bg-green-100 h-screen flex flex-col items-center gap-5">
             <header className="h-20 w-full bg-white flex justify-around items-center gap-x-96">
