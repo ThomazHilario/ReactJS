@@ -1,14 +1,27 @@
+// import from react-router-dom
 import { Link } from "react-router-dom"
 
-import { useSelector } from "react-redux"
-
+// import type
 import { InitialStateProps } from "../Redux/User/slice"
+
+// import useSelector
+import { useSelector,useDispatch } from "react-redux"
+
+// import logOutUser
+import { logOutUser } from "../Redux/User/slice"
 
 export const Painel = () => {
 
-    const {user} = useSelector<InitialStateProps>((rootReducer) => rootReducer.user) as InitialStateProps
+    // dispatch
+    const dispatch = useDispatch()
 
-    console.log(user)
+    // Buscando dados do redux
+    const { user } = useSelector<InitialStateProps>(root => root.user) as InitialStateProps
+
+    function logOut(){
+        dispatch(logOutUser())
+    }
+
     return(
         <main className="bg-green-100 h-screen flex flex-col items-center gap-5">
             <header className="h-20 w-full bg-white flex justify-around items-center gap-x-96">
@@ -16,7 +29,13 @@ export const Painel = () => {
                     Dev<strong className="text-purple-500">Redux</strong>
                 </h1>
                 
-                <button className="bg-blue-600 text-white rounded-sm px-5 h-8">Fazer Login</button>
+                {user ? 
+                    <button className="bg-red-500 text-white rounded-sm px-5 h-8" onClick={logOut}>
+                        Sair
+                    </button> 
+                    : 
+                    <button className="bg-blue-600 text-white rounded-sm px-5 h-8">Fazer Login</button>
+                }
             </header>
 
             <div className=" w-[70vw] flex flex-col gap-5">
@@ -28,10 +47,10 @@ export const Painel = () => {
                 </div>
             
                 <div className="bg-white rounded-sm pl-2 py-2 flex flex-col gap-1">
-                    <h1 className="text-3xl font-bold">ola visitante seja bem-vindo</h1>
+                    <h1 className="text-3xl font-bold">ola {user?.name} seja bem-vindo</h1>
 
                     <div>
-                        <p>Email: ...</p>
+                        <p>Email: {user?.email}</p>
                     </div>
 
                     <div>

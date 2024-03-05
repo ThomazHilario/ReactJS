@@ -1,10 +1,22 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // types
 import { FormEvent } from "react"
 
+// import useselector e useDispach
+import { useDispatch } from 'react-redux'
+
+// import  createUser
+import { createUser } from '../Redux/User/slice'
+
 export const Home = () => {
+
+    // navigate
+    const navigate = useNavigate()
+
+    // Buscando action do redux
+    const dispatch = useDispatch()
 
     // states - name and email
     const [name, setName] = useState<string>('')
@@ -15,7 +27,19 @@ export const Home = () => {
         // Cancelando envio do formulario
         e.preventDefault()
 
+        if(name !== '' && email !== ''){
+            // Enviando dados com redux
+            dispatch(createUser({
+                name:name,
+                email:email,
+                address:null
+            }))
 
+            // Navegando para a rota painel
+            navigate('/painel')
+        }
+
+        
     }
     return (
         <main className="bg-green-100 h-screen flex flex-col justify-center items-center gap-4">
