@@ -7,13 +7,13 @@
 - Ir na pasta do projeto, abrir um terminal, e usar o comando: npm install redux react-redux @reduxjs/toolkit
 
 ## Como usar o redux:
-- Primeiro criar uma pasta chamada redux (dentro de src). (organizacao)
+- Primeiro criar uma pasta chamada redux (dentro de src). (organização)
 - Depois dentro da pasta redux criar arquivos js com os nomes: root-Reducers e store
-- Depois criar uma pasta para dizer que dentro desta pasta tera estados sobre algo deleex:User.
+- Depois criar uma pasta para dizer que dentro desta pasta tera estados sobre algo dele, ex:User.
 
 - Agora dentro da pasta User devemos criar um arquivo slice.js: responsavel por configurar as states e as actions.
 
- - Dentro de slice configurar as states ex:
+ - Dentro de slice.js devemos configurar as states ex:
    
 ```
     // importando o createSlice
@@ -69,4 +69,21 @@
     export const Store = configureStore({
         reducer: combine
     })
+```
+
+-> Agora devemos importar o Provider do redux e a store configurada, e colocar envolta do app.
+```
+    // import my Store
+    import { Store } from './Redux/store.tsx'
+
+    // import Provider
+    import { Provider } from 'react-redux'
+
+    ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+        <Provider store={Store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>,
+    )
 ```
