@@ -87,3 +87,73 @@
     </React.StrictMode>,
     )
 ```
+
+
+-> Consumindo dados do redux:
+
+- Para consumir dados devemos usar o useSelector dentro de um componente buscando a state desejada.
+
+```
+    // import useSelector
+    import { useSelector } from "react-redux"
+
+    // Buscando dados do redux
+        const { user } = useSelector(root => root.user)
+```
+
+
+-> Enviar dados por meio das actions:
+
+- Criamos primeiro uma action em reducers.
+
+```
+reducers:{
+    // Criando action
+    // Parametro state: permite pegar as informacoes das states criadas.
+    // paramentro action: permite receber informacoes mandadas pelo usuario.
+
+    createUser: (state,action) =>{
+        console.log(action.payload)
+
+        return{
+            ...state,
+
+            // inserindo dados na state user
+            user:{
+                name: action.payload.name,
+                email:action.payload.email,
+                address:null,
+            }
+        }
+    },
+}
+
+// exportando actions
+export const { createUser } = userSlice.actions
+```
+
+- Importamos o dispatch e a action criada e agora basta enviar os dados:
+
+```
+    // import useselector e useDispach
+    import { useDispatch } from 'react-redux'
+
+    // import  createUser
+    import { createUser } from '../Redux/User/slice'
+
+    // Buscando action do redux
+    const dispatch = useDispatch()
+
+    function singIn(e:FormEvent){
+
+        // Cancelando envio do formulario
+        e.preventDefault()
+
+        // Enviando dados com redux
+        dispatch(createUser({
+            name:name,
+            email:email,
+            address:null
+        }))      
+    }
+```
