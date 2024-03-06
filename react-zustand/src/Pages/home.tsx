@@ -23,6 +23,7 @@ export default function Home(){
     const [email, setEmail] = useState<string>('')
     const [telefone, setTelefone] = useState<string>('')
 
+    // createUser
     function createUser(e:FormEvent){
         // Cancelando envio do formulario
         e.preventDefault()
