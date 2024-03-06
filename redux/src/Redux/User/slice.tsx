@@ -51,12 +51,33 @@ export const userSlice = createSlice({
                 ...state,
                 user:null
             }   
+        },
+        deleteAddressUser:(state) => {
+            return {
+                ...state,
+                user:{
+                    ...state.user,
+                    address:null
+                }
+            }
+        },
+        addAddress:(state, action) => {
+            return{
+                ...state,
+                user:{
+                    ...state.user,
+                    address:{
+                        rua:action.payload.rua,
+                        numero:action.payload.numero
+                    },
+                }
+            }
         }
     }
 })
 
 // exportando actions
-export const { createUser, logOutUser } = userSlice.actions
+export const { createUser, logOutUser, addAddress, deleteAddressUser } = userSlice.actions
 
 // exportando reducer
 export default userSlice.reducer

@@ -8,7 +8,7 @@ import { InitialStateProps } from "../Redux/User/slice"
 import { useSelector,useDispatch } from "react-redux"
 
 // import logOutUser
-import { logOutUser } from "../Redux/User/slice"
+import { logOutUser, deleteAddressUser } from "../Redux/User/slice"
 
 export const Painel = () => {
 
@@ -18,8 +18,14 @@ export const Painel = () => {
     // Buscando dados do redux
     const { user } = useSelector<InitialStateProps>(root => root.user) as InitialStateProps
 
+    // logOut - user
     function logOut(){
         dispatch(logOutUser())
+    }
+
+    // delete ddress
+    function deleteAddress(){
+        dispatch(deleteAddressUser())
     }
 
     return(
@@ -53,14 +59,18 @@ export const Painel = () => {
                         <p>Email: {user?.email}</p>
                     </div>
 
-                    <div>
-                        <h1 className="font-bold">Endereco atual:</h1>
-                        
-                        <div className="flex gap-5">
-                            <p>Rua endereco, 980 </p> 
-                            <button className="text-red-500">Deletar endereco</button>
-                        </div>
-                    </div>
+                    {
+                        user?.address && (
+                            <div>
+                                <h1 className="font-bold">Endereco atual:</h1>
+                                
+                                <div className="flex gap-5">
+                                    <p>{user.address?.rua}, {user.address?.numero} </p> 
+                                    <button className="text-red-500" onClick={deleteAddress}>Deletar endereco</button>
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </main>

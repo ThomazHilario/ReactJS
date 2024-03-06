@@ -1,10 +1,30 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+
+// import dispatch
+import { useDispatch } from "react-redux"
+
+import { addAddress } from "../Redux/User/slice"
+
 export const Address = () => {
+
+    const dispatch = useDispatch()
 
     // state - street and numberStreet
     const [streetHouse, setStreetHouse] = useState<string>('')
     const [numberStreet, setNumberStreet] = useState<string>('')
+
+    function registerAddress(e){
+        e.preventDefault()
+
+        dispatch(addAddress({
+            rua:streetHouse,
+            numero:numberStreet
+        }))
+
+        setStreetHouse('')
+        setNumberStreet('')
+    }
 
     return(
         <main className="bg-green-100 h-screen flex flex-col items-center gap-5">
@@ -38,7 +58,7 @@ export const Address = () => {
                         value={numberStreet}
                         onChange={(e) => setNumberStreet(e.target.value)}/>
 
-                        <button className="bg-blue-600 h-8 rounded-sm">Salvar alteracao</button>
+                        <button className="bg-blue-600 h-8 rounded-sm" onClick={registerAddress}>Salvar alteracao</button>
                     </form>
                 </div>
             </div>
