@@ -5,7 +5,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Criando uma interface para o estado inicial
 export interface InitialStateProps{
-    user:UserStateprops | null
+    user:UserStateprops | null,
+    users: object[]
 }
 
 interface AddressProps{
@@ -21,7 +22,8 @@ export interface UserStateprops{
 
 // States
 const initialState:InitialStateProps = {
-    user:null
+    user:null,
+    users:[]
 }
 
 // Meu slice
@@ -52,6 +54,9 @@ export const userSlice = createSlice({
                 user:null
             }   
         },
+        fetchUsers:(state) => {
+            console.log('Requisição')
+        },
         deleteAddressUser:(state) => {
             return {
                 ...state,
@@ -77,7 +82,7 @@ export const userSlice = createSlice({
 })
 
 // exportando actions
-export const { createUser, logOutUser, addAddress, deleteAddressUser } = userSlice.actions
+export const { createUser, logOutUser, addAddress, deleteAddressUser, fetchUsers } = userSlice.actions
 
 // exportando reducer
 export default userSlice.reducer

@@ -8,7 +8,7 @@ import { InitialStateProps } from "../Redux/User/slice"
 import { useSelector,useDispatch } from "react-redux"
 
 // import logOutUser
-import { logOutUser, deleteAddressUser } from "../Redux/User/slice"
+import { logOutUser, deleteAddressUser, fetchUsers } from "../Redux/User/slice"
 
 export const Painel = () => {
 
@@ -26,6 +26,11 @@ export const Painel = () => {
     // delete ddress
     function deleteAddress(){
         dispatch(deleteAddressUser())
+    }
+
+    // seachUsers
+    function seachUsers(){
+        dispatch(fetchUsers())
     }
 
     return(
@@ -77,7 +82,7 @@ export const Painel = () => {
                     <hr className="border-black my-2"/>
 
                     <h2>Buscar Usuarios</h2>
-                    <button className="bg-gray-400 rounded-sm">Buscar</button>
+                    <button className="bg-gray-400 rounded-sm" onClick={seachUsers}>Buscar</button>
                 </div>
             </div>
         </main>
