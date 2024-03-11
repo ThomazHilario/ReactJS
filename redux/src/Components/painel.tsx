@@ -52,12 +52,14 @@ export const Painel = () => {
                     <Link to='/address' className="bg-slate-400 rounded-sm px-4 py-1">Meus Enderecos</Link>
                 </div>
             
-                <div className="bg-white rounded-sm pl-2 py-2 flex flex-col gap-1">
+                <div className="bg-white rounded-sm px-2 py-2 flex flex-col gap-1">
                     <h1 className="text-3xl font-bold">ola {user?.name} seja bem-vindo</h1>
 
-                    <div>
-                        <p>Email: {user?.email}</p>
-                    </div>
+                    {user?.email && (
+                        <div>
+                            <p>Email: {user?.email}</p>
+                        </div>
+                    )}
 
                     {
                         user?.address && (
@@ -71,6 +73,11 @@ export const Painel = () => {
                             </div>
                         )
                     }
+
+                    <hr className="border-black my-2"/>
+
+                    <h2>Buscar Usuarios</h2>
+                    <button className="bg-gray-400 rounded-sm">Buscar</button>
                 </div>
             </div>
         </main>
